@@ -1,0 +1,29 @@
+<link rel="stylesheet" href="/css/global.css">
+<link rel="stylesheet" href="/css/navbar.css">
+
+<div class="navbar unselectable" style="background-color: #463ea5" style="position: fixed;">
+	<div class=navbar-brand>
+		<a href="/" class=navbar-item>
+			<img src="/img/navbar_logo.png" width="112" height="28">
+		</a>
+		<a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false" style="color: #FFFFFF">
+			<span aria-hidden="true"></span>
+			<span aria-hidden="true"></span>
+			<span aria-hidden="true"></span>
+		</a>
+	</div>
+	<div class=navbar-menu>
+		<div class=navbar-start>
+			<!-- after logo, left side of navbar here - only on desktop -->
+		</div>
+		<div class=navbar-end>
+			<div class=navbar-item>
+				<span class="loggedImageAndText">
+					<img src="<%= user.profilePicture %>" style="border-radius: 10000000000em;" />&nbsp;
+					<%= user.username %>
+				</span>
+			</div>
+		</div>
+	</div>
+</div>
+<script src="/js/navbar.js"></script>

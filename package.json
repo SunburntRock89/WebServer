@@ -1,0 +1,47 @@
+{
+  "name": "webserver",
+  "version": "1.0.0",
+  "description": "WebServer",
+  "main": "index.js",
+  "bin": {
+    "webserver": "./index.js"
+  },
+  "pkg": {
+    "scripts": "Database/Schemas/*.js",
+    "Web": "Web/**/**/**"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SunburntRock89/WebServer.git"
+  },
+  "author": "SunburntrOCK89",
+  "license": "GPL-2.0",
+  "bugs": {
+    "url": "https://github.com/SunburntRock89/WebServer/issues"
+  },
+  "homepage": "https://github.com/SunburntRock89/WebServer#readme",
+  "dependencies": {
+    "bcrypt": "^3.0.5",
+    "body-parser": "^1.18.3",
+    "collection": "github:discordjs/collection",
+    "compression": "^1.7.4",
+    "connect-session-sequelize": "^6.0.0",
+    "cookie-parser": "^1.4.4",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "express-session": "^1.15.6",
+    "fs-nextra": "^0.4.5",
+    "multer": "^1.4.1",
+    "randomstring": "^1.1.5",
+    "require-reload": "^0.2.2",
+    "sequelize": "^5.2.1",
+    "serve-favicon": "^2.5.0",
+    "serve-static": "^1.13.2",
+    "sqlite3": "^4.0.6",
+    "winston": "^3.2.1",
+    "winston-daily-rotate-file": "^3.8.0"
+  }
+}

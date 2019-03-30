@@ -1,0 +1,44 @@
+<html>
+	<head>
+		<link rel="stylesheet" href="/css/login.css" />
+		<script src="/js/login.js"></script>
+		<% include ../Partials/head.ejs %>
+	</head>
+	<body>
+		<section class="hero is-bold is-fullheight gradient">
+			<div class="hero-body">
+				<div class="container">
+					<h1 class="title" style="color: white">
+						Welcome to <%= location %>!
+					</h1>
+					<h2 class="subtitle" style="color: white">
+						Simple webhosting using SunburntRock89's Web Server.
+					</h2>
+					<br>
+
+					<div class="field">
+						<p class="control has-icons-left has-icons-right">
+							<input class="input" type="user" placeholder="Username" id="userBox">
+							<span class="icon is-small is-left">
+								<i class="fas fa-user"></i>
+							</span>
+						</p>
+					</div>
+					<div class="field">
+						<p class="control has-icons-left">
+							<input class="input" type="password" placeholder="Password" id="passwordBox">
+							<span class="icon is-small is-left">
+								<i class="fas fa-lock"></i>
+							</span>
+						</p>
+					</div>
+					<input type="button" class="button is-info" value="Login" onclick="login()" />
+
+					<% if (!secure) { %>
+						<span class="tag is-warning is-medium">Your credentials will be sent <br><strong style="padding-left: 0.25em;"> unencrypted.</strong></span><br>
+					<% } %>
+				</div>
+			</div>
+		</section>
+	</body>
+</html>

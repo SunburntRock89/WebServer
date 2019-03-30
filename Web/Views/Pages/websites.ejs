@@ -1,0 +1,41 @@
+<html>
+	<head>
+		<% include ../Partials/head.ejs %>
+		<% include ../Partials/navbar.ejs %>
+	</head>
+	<body>
+		<div class="columns">
+			<% include ../Partials/sidebar.ejs %>
+			<% for (let site of websites) { %>
+				<div class="column is-auto" style="padding: 0.25in">
+					<nav class="panel">
+						<p class="panel-heading">
+							<%= site.fullDomain %>
+						</p>
+						<div class="panel-block">
+							<div class="columns">
+								<div class="column is-one-quarter">
+									<i class="fas fa-cogs fa-3x" style="display: inline-block; width: 100%;"></i>
+									<br>
+									Settings
+								</div>
+								<div class="column is-one-quarter">
+									<i class="fas fa-envelope fa-3x"></i>
+									Mail Accounts
+								</div>
+								<div class="column is-one-quarter">
+									<i class="fas fa-envelope fa-3x"></i>
+									Mail Accounts
+								</div>
+								<div class="column is-one-quarter">
+									<i class="fas fa-envelope fa-3x"></i>
+									Mail Accounts
+								</div>
+							</div>
+						</div>
+					</nav>
+				</div>
+			<% } %>
+		</div>
+	</body>
+</html>

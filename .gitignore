@@ -59,3 +59,9 @@ typings/
 
 # next.js build output
 .next
+
+Database/database\.sqlite
+
+Configuration/config\.js
+
+Configuration/
