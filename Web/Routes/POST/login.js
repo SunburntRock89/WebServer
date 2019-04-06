@@ -15,11 +15,11 @@ module.exports = async(req, res) => {
 	if (!passwordCorrect) return res.status(400).json({ code: 2, msg: "Password is incorrect." });
 
 	if (passwordCorrect) {
-		res.cookie("token", user.token);
-		res.redirect("/");
+		res.cookie("token", user.token).json({ code: 0, message: "Success!" });
 	}
 };
 
 module.exports.info = {
 	route: "/login",
+	rateLimit: true,
 };

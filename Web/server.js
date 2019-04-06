@@ -8,19 +8,21 @@ const session = require("express-session");
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
 
 server.listen(config.webServer.configurationPort || 8080, config.webServer.ip || "0.0.0.0", () => {
-	winston.info(`[Web Control Panel] Successfully opened web control panel on port ${config.webServer.configurationPort || 8080}!`);
+	winston.info(`[Web Control Panel] Successfully opened web control panel on port ${config.webServer.configurationPortUnencrypted || 8080}!`);
 });
 
 app.listen(config.webServer.port, () => winston.info(`[Web Server] Successfuly started websites on port ${config.webServer.port || 80}`));
 
 module.exports = async sequelize => {
-	app.use(require("serve-static")(`${__dirname}/Views/Static/`));
+	// eslint-disable-next-line max-statements-per-line
+	app.use(async(req, res, next) => { res.set("X-Powered-By", "Harrison's Mum"); next(); });
 	app.use(require("body-parser").json());
 	app.use(require("body-parser").urlencoded({ extended: true }));
 	app.use(require("compression")());
 	app.use(require("cookie-parser")());
 	app.set("views", `${__dirname}/Views/Pages`);
 	app.engine("ejs", ejs.renderFile);
+	app.enable("trust proxy");
 
 	app.use(require("serve-favicon")(`${__dirname}/Views/Static/favicon.ico`));
 
@@ -34,6 +36,12 @@ module.exports = async sequelize => {
 		return url;
 	};
 
+	const rateLimit = require("express-rate-limit")({
+		windowMs: 15 * 60 * 1000,
+		max: 15,
+		handler: (req, res) => require("./Routes/Internal/rateLimitHandle.js"),
+	});
+
 	let getroutes = await scan("./Web/Routes/GET", { filter: (_, file) => file.endsWith(".js") });
 	for (let i of getroutes) {
 		let route = require(i[0]);
@@ -45,6 +53,7 @@ module.exports = async sequelize => {
 	for (let i of postroutes) {
 		let route = require(i[0]);
 		let name = route.info.route;
+		if (route.rateLimit) return app.post(name, rateLimit, (req, res) => reload(i[0](req, res)));
 		app.post(name, (req, res) => reload(i[0])(req, res));
 	}
 
@@ -62,8 +71,5 @@ module.exports = async sequelize => {
 		resave: false,
 	}));
 
-	app.use(async(req, res, next) => {
-		req.header("X-Powered-By", "Harrison's Mum");
-		next();
-	});
+	app.use(require("serve-static")(`${__dirname}/Views/Static/`));
 };

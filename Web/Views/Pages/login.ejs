@@ -32,10 +32,10 @@
 							</span>
 						</p>
 					</div>
-					<input type="button" class="button is-info" value="Login" onclick="login()" />
+					<input type="submit" id=button class="button is-info" value="Login" onclick="login(this)" />
 
 					<% if (!secure) { %>
-						<span class="tag is-warning is-medium">Your credentials will be sent <br><strong style="padding-left: 0.25em;"> unencrypted.</strong></span><br>
+						<span class="tag is-warning is-medium" id="tag">Your credentials will be sent <br><strong style="margin-left: 0.1em;"> unencrypted.</strong></span><br>
 					<% } %>
 				</div>
 			</div>
