@@ -19,13 +19,20 @@ async function login(button) {
 
 	if (res.code < 0) {
 		window.location.href = "/";
-	}
-
-	if (res.code !== 0) {
+	} else if (res.code !== 0) {
 		document.getElementById("tag").innerHTML = res.msg;
 		document.getElementById("tag").classList = "tag is-danger is-medium";
+	} else {
+		window.location.href = "/websites";
 	}
 
 	button.classList = "button is-info";
 	button.disabled = false;
 }
+
+document.addEventListener("keyup", event => {
+	if (event.keyCode === 13) {
+		event.preventDefault();
+		login(document.querySelector("#button"));
+	}
+});
