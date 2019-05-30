@@ -15,7 +15,7 @@ module.exports = async(req, res) => {
 		domain: req.query.domain,
 		subdomain: req.query.subdomain,
 	});
-	res.send(toSend.split("\n").join("\n"));
+	res.send(toSend);
 };
 module.exports.info = {
 	route: "/static/domainSettings",

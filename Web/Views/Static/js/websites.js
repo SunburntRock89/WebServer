@@ -10,7 +10,8 @@ const domainSettings = async(fulldomain, protocol, id, domain, subdomain) => {
 	let page = await fetch(encodeURI(`/static/domainSettings?fulldomain=${fulldomain}&protocol=${protocol}&id=${id}&domain=${domain}&subdomain=${subdomain}`));
 	page = await page.text();
 
-	page = page.split("\n").splice(2);
+	page = page.split("\r\n").splice(2);
 
-	document.querySelector("#main").innerHTML = page.join("\n");
+	document.getElementById(`${id}`).innerHTML = page.join("\r\n");
+	document.getElementById(`${id}`).style = "display: block;";
 };

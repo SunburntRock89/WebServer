@@ -1,13 +1,12 @@
 # You are not meant to see this page. Please go back to the homepage and use the <a href="/websites">main settings page.</a>
 
 <!-- code here -->
-Domain
+Domain:
+<% if (subdomain && subdomain.length > 0) { %>
+	<input type=text class=input value="<%= subdomain %>">
+<% } else { %>
+	<p style="text-indent: 3%"><b><%= domain %></b></p>
+<% } %>
+
 <br>
-<span>
-	<% if (subdomain && subdomain.length > 0) { %>
-		<input type=text class=input value="<%= subdomain %>">
-	<% } else { %>
-		<%= domain %>
-	<% } %>
-</span>
-<input type=submit text="Save Changes" class="button is-link">
+<input type=submit value="Save Changes" class="button is-link">

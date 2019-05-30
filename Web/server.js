@@ -72,10 +72,11 @@ module.exports = async sequelize => {
 	}));
 
 	app.use(async(req, res, next) => {
-		let port = req.get("host").split(":").length > 0 ? req.get("host").split(":")[1] : config.webServer.port;
+		let port = req.get("host").split(":").length > 1 ? req.get("host").split(":")[1] : config.webServer.port;
+
 		port = Number(port);
 
-		if (port !== config.webServer.configurationPortUnencrypted && port !== config.webServer.configurationPort) return res.status(404).send("not implemented");
+		if (port !== config.webServer.configurationPortUnencrypted && port !== config.webServer.configurationPort) return res.status(404).end("not implemented");
 		next();
 	});
 

@@ -13,7 +13,7 @@
 				<p class="panel-heading">
 					<%= site.fullDomain %>
 				</p>
-				<div class="panel-block" style="text-align: center" id="main">
+				<div class="panel-block" style="text-align: center;" name=main id='<%= site.id %>'>
 					<div class="columns">
 						<div class="column is-one-quarter">
 							<div onclick="domainSettings('<%= site.fullDomain %>', '<%= site.protocol%>', '<%= site.id %>', '<%= site.domain %>', '<%= site.subdomain %>')" class="hand">
@@ -26,18 +26,23 @@
 							<div onclick="domainSettings('<%= site.fullDomain %>', '<%= site.protocol%>', '<%= site.id %>')" class="hand">
 								<i class="fas fa-envelope fa-3x"></i>
 								<br>
-								Mail Accounts
+								Mail
 							</div>
 						</div>
 						<div class="column is-one-quarter">
-							<i class="fas fa-envelope fa-3x"></i>
+							<i class="fas fa-file-alt fa-3x"></i>
 							<br>
-							Mail Accounts
+							File Manager
 						</div>
 						<div class="column is-one-quarter">
-							<i class="fas fa-envelope fa-3x"></i>
+							<i class="fas fa-download fa-3x"></i>
 							<br>
-							Mail Accounts
+							FTP Settings
+						</div>
+						<div class="column is-one-quarter">
+							<i class="fas fa-lock fa-3x"></i>
+							<br>
+							SSL Settings
 						</div>
 					</div>
 				</div>
