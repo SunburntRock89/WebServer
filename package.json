@@ -24,7 +24,7 @@
   },
   "homepage": "https://github.com/SunburntRock89/WebServer#readme",
   "dependencies": {
-    "bcrypt": "^3.0.5",
+    "bcrypt": "^5.0.0",
     "body-parser": "^1.18.3",
     "collection": "github:discordjs/collection",
     "compression": "^1.7.4",
